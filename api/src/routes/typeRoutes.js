@@ -8,7 +8,7 @@ const {Recipe, Type} = require ('../db')
 
 router.get('/', async(req,res)=>{
 
-    const apiEndPoint = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
+    const apiEndPoint = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=4d549f3dfcf04387bb3a14c2e968f20b&addRecipeInformation=true&number=100`);
     const infoApiEndPoint = await apiEndPoint.data.results.map(e => e.diets).flat(Infinity)
     infoApiEndPoint.forEach(e=>{
         Type.findOrCreate({
