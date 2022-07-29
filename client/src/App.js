@@ -17,13 +17,10 @@ function App() {
         <Route  path='/home' element={<Home/>}/>
         <Route exact path='/home/:id' element={<DetailRecipe/>}/>
         <Route exact path='/recipe' element ={<CreateRecipe/>}/>
-
-      
+   
     </Routes>
     </div>
-
     </BrowserRouter>
   );
 }
-
 export default App;
