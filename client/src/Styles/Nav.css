@@ -1,0 +1,9 @@
+.nav{
+    position:static;
+    width: 100%;
+    background: #f3f3f3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
+}
