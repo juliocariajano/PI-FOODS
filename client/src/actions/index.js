@@ -3,7 +3,7 @@ import axios from "axios";
 export function getRecipes(){
     return async function (dispatch)
 {
-    var json = await axios.get('http://localhost:3001/recipe')
+    var json = await axios.get('/recipe')
     return dispatch(
         {
             type: 'GET_RECIPES',
@@ -15,7 +15,7 @@ export function getRecipes(){
 export function detailRecipe(id){
     return async function (dispatch){
         try {
-            const detRecipe = await axios.get(`http://localhost:3001/recipe/${id}`)
+            const detRecipe = await axios.get(`/recipe/${id}`)
             return dispatch({
                 type: 'DETAIL_RECIPE',
                 payload: detRecipe.data
@@ -35,7 +35,7 @@ export function setDetailRecipe(){
 export function onSearchName(payload){
     return async function(dispatch){
         try {
-            var json=await axios.get(`http://localhost:3001/recipe?name=${payload}`)
+            var json=await axios.get(`/recipe?name=${payload}`)
             return dispatch(
                 {
                     type:"SEARCHBYNAME",
@@ -55,7 +55,7 @@ export function onSearchName(payload){
 
 export function getTypes(){
     return async function (dispatch){
-        var json = await axios.get("http://localhost:3001/type", {})
+        var json = await axios.get("/type", {})
         return dispatch({
             type: 'GET_TYPES',
             payload: json.data
@@ -77,13 +77,13 @@ export function alphabeticalSort(payload){
 }
 export function addRecipes(payload){
     return async function(dispatch){
-        var json = await axios.post("http://localhost:3001/recipe", payload)
+        var json = await axios.post("/recipe", payload)
         return json
     }
 }
 export function scoreSort(filter){
 return async function (dispatch){
-    var info = await axios.get(`http://localhost:3001/recipe/order/${filter}`)
+    var info = await axios.get(`/recipe/order/${filter}`)
     return dispatch ({
         type:'SCORE_SORT',
         payload:info.data,

@@ -5,7 +5,10 @@ import store from "./store/index"
 // import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import dotenv from "dotenv";
+dotenv.config();
+import axios from 'axios'
+axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
