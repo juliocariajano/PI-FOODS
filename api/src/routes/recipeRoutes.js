@@ -86,5 +86,28 @@ router.get('/order/:info',async(req, res)=>{
     res.send(order);
 })
 
+router.put('edit/:id', async (req, res)=>{
+        try {
+          const {id} = req.params;
+          const { name, summary, score, healthScore, steps, dietTypes } = req.body;
+
+          const editRecipe = await Recipe.update(
+            {
+                name, 
+                summary, 
+                score, 
+                healthScore, 
+                steps, 
+                dietTypes
+            },
+            { where: { id:id.id } }
+          );
+          res.send(editRecipe);
+        } catch (error) {
+          console.log(error);
+        }
+      
+})
+
 
 module.exports= router;
