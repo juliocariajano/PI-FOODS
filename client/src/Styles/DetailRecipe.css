@@ -5,10 +5,10 @@
     font-family: 'Quicksand', sans-serif;
 }
 
-body{
+/* body{
     width: 100%;
     height: 100vh;
-}
+} */
 .container{
     position: relative;
     display: flex;
@@ -102,11 +102,11 @@ h2:after{
     background-color: #27ae60;
 }
 
-@media screen and (max-width:880px){
+/* @media screen and (max-width:880px){
     .box{
         grid-template-columns: 1fr;
     }
     .left{
         height: 200px;
     }
-}
+} */
