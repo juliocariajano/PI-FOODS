@@ -1,10 +1,40 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
 body{
-    
     height: 100%;
     min-height: 100vh;
     /* background: url("../img/home.jpg") no-repeat center;
     background-size: cover; */
+    /*background-color: #0093E9;*/
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+    ;
+}
+.general{
+    margin: auto;
+    margin-top:20px ;
+    border-radius: 5px;
+    width: 960px;
+    height: auto;
     background-color: #0093E9;
     background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
     ;
 }
+@media all and (max-width:820px){
+    .general{
+       width:780px ; 
+    }
+    }
+
+@media all and (max-width:415px){
+.general{
+   width:400px ; 
+}
+}
+
+@media all and (max-width:280px){
+    .general{
+       width:270px ; 
+    }
+    }

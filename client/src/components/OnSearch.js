@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch} from 'react-redux';
 import {onSearchName} from "../actions/index"
 import "../Styles/OnSearch.css"
+import { Link } from 'react-router-dom';
 export default function OnSearch({setCurrentPage}) {
 // const [msg, setMsg]= useState();
 // const[currentPage, setCurrentPage]= useState();
@@ -35,6 +36,12 @@ function handleSubmit(e){
         />
         {<button className='btn' type='submit' onClick={(e)=>handleSubmit(e)}>Search</button>}
         {/* {msg.length > 0 && (<div> <p>{msg}</p></div>)} */}
+        <Link to="/recipe" >
+      <button className='btn'>CREATE RECIPE</button>
+      </Link> 
+      <br/>
+    <button className='btn'>Reset</button>  
+    
     </div>
     
   )

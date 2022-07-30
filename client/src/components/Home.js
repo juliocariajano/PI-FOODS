@@ -48,16 +48,12 @@ export default function Home({setOrder}) {
     
   return (
     
-    <>
+    <div className='general'>
     <Navbar
     setCurrentPage={setCurrentPage}
-    />
-    <Filters
-    
-    setCurrentPage={setCurrentPage}
     setFilter={setFilter}
-    
-    /> 
+    />
+     
     <Cards
     recipeByPage={recipeByPage}
     recipes={recipes}
@@ -67,6 +63,6 @@ export default function Home({setOrder}) {
     setCurrentPage={setCurrentPage}
     />
    
-    </>
+    </div>
   )
 }

@@ -17,17 +17,17 @@ export default function Paginate(
     return (
     <div >
         <ul>
-            <button onClick={()=>
+            <button className='butto' onClick={()=>
             setCurrentPage(currentPage ===1 ? currentPage: currentPage-1)}>
             Prev</button>
             {PageNumber && PageNumber.map((number)=>(
-            <button 
+            <button className='butto'
             key={number}
             onClick={()=> paginate(number)}>
                 {number}
             </button>
             ))}
-            <button onClick={()=> setCurrentPage(currentPage ===numPage? currentPage: currentPage + 1)}> Next</button>
+            <button className='butto' onClick={()=> setCurrentPage(currentPage ===numPage? currentPage: currentPage + 1)}> Next</button>
         </ul>
     </div>
   )

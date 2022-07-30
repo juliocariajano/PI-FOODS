@@ -82,10 +82,7 @@ const allType = useSelector((state)=>state.types)
 
       <option value=""></option>
       </select> 
-      <Link to="/recipe" >
-      <button>CREATE RECIPE</button>
-      </Link> 
-      {/* <button >Reset</button>  */}
+     
    
       
     <hr/>
