@@ -4,10 +4,14 @@ import "../Styles/LandingPage.css"
 export default function LandingPage() {
   return (
     <div className='contain'>
-        <h1 className='titulo'>Bienvenidos a mi Recetario</h1>
-    
+           
     <Link to="/home">
-    <button className='button'> Recetario </button>
+    <button className='learn-more'>
+       <span className='circle' arial-hidden='true'>
+        <span className='icon arrow'></span>
+        </span> 
+        <span className='button-text'> Recetario</span>  
+       </button>
     </Link>
     </div>
     
