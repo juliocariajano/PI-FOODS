@@ -12,7 +12,7 @@ console.log(recipeDetail)
 
 useEffect(()=>{
     dispatch(detailRecipe(id))
-    {dispatch(setDetailRecipe())}
+    return ()=> {dispatch(setDetailRecipe())}
 },[dispatch, id]);
  
     return (
