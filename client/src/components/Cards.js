@@ -6,14 +6,7 @@ import  "../Styles/Cards.css"
 export default function Cards({ recipeByPage, recipes, paginate, currentRecipe, setCurrentPage,currentPage}) {
 return (
     <div >
-    <Paginate
-    recipeByPage={recipeByPage}
-    recipes={recipes.length}
-    paginate={paginate}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-
-    />
+ 
     <div className='gallery'>
     {currentRecipe.map((e)=>{
         return (
@@ -35,7 +28,14 @@ return (
     }
     
     </div>
-    
+    <Paginate
+    recipeByPage={recipeByPage}
+    recipes={recipes.length}
+    paginate={paginate}
+    currentPage={currentPage}
+    setCurrentPage={setCurrentPage}
+
+    />    
     </div>
   )
 }
