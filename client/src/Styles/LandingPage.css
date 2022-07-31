@@ -42,7 +42,7 @@ button {
     position: relative;
     display: block;
     margin: 0;
-    top: 280px;
+    top: 400px;
 
     width: 3rem;
     height: 3rem;
@@ -85,7 +85,7 @@ button {
    button.learn-more .button-text {
      transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); 
      position: absolute; 
-    top: 300px;
+    top: 410px;
     left: 0;
     right: 0;
     bottom: 0; 
