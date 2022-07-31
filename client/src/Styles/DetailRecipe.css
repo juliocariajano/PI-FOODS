@@ -102,11 +102,11 @@ h2:after{
     background-color: #27ae60;
 }
 
-/* @media screen and (max-width:880px){
+@media screen and (max-width:290px){
     .box{
         grid-template-columns: 1fr;
     }
     .left{
-        height: 200px;
+        height: 260px;
     }
-} */
+} 

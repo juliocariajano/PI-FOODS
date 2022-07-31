@@ -86,7 +86,7 @@ router.get('/order/:info',async(req, res)=>{
     res.send(order);
 })
 
-router.put('edit/:id', async (req, res)=>{
+router.put('/update/:id', async (req, res)=>{
         try {
           const {id} = req.params;
           const { name, summary, score, healthScore, steps, dietTypes } = req.body;
@@ -98,13 +98,30 @@ router.put('edit/:id', async (req, res)=>{
                 score, 
                 healthScore, 
                 steps, 
-                dietTypes
-            },
-            { where: { id:id.id } }
+             },
+            { where: {id} }
           );
           res.send(editRecipe);
+        //   const typedb = await Type.findAll({
+        //     where: {name:dietTypes}
+        //})
+          const typeUpdate = await typedb.addType(typedb)
+          res.status(200).send("Type modificado")
         } catch (error) {
           console.log(error);
+        }
+      
+})
+
+router.use('/delete/:id', async (req, res)=>{
+        try {
+          const id = req.params.id;
+          await Recipe.destroy({
+            where: { id: id },
+          });
+          return res.send("deleted!");
+        } catch (error) {
+          return error;
         }
       
 })
