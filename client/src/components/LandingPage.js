@@ -10,7 +10,7 @@ export default function LandingPage() {
        <span className='circle' arial-hidden='true'>
         <span className='icon arrow'></span>
         </span> 
-        <span className='button-text'> Recetario</span>  
+        <span className='button-text'> Ingresar </span>  
        </button>
     </Link>
     </div>

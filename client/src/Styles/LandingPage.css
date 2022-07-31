@@ -17,22 +17,24 @@
 }
 button {
     position: relative;
-    border-top: 30px;
+    border-left: 600px;
     display: inline-block;
     cursor: pointer;
     outline: none;
     border: 0;
+    
     vertical-align: middle;
     text-decoration: none;
     background: transparent;
     padding: 0;
-    font-size: inherit;
+    font-size: 22px;
     font-family: inherit;
    }
    
    button.learn-more {
-    width: 12rem;
-    height: auto;
+
+     width: 12rem;
+    height: auto;   
    }
    
    button.learn-more .circle {
@@ -40,19 +42,24 @@ button {
     position: relative;
     display: block;
     margin: 0;
+    top: 280px;
+
     width: 3rem;
     height: 3rem;
     background: #282936;
-    border-radius: 1.625rem;
+    border-radius: 1.625rem; 
+   
+
    }
    
    button.learn-more .circle .icon {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     position: absolute;
-    top: 0;
+    top: 2px;
     bottom: 0;
     margin: auto;
     background: #fff;
+
    }
    
    button.learn-more .circle .icon.arrow {
@@ -76,27 +83,23 @@ button {
    }
    
    button.learn-more .button-text {
-    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-    position: absolute;
-    top: 0;
+     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); 
+     position: absolute; 
+    top: 300px;
     left: 0;
     right: 0;
-    bottom: 0;
-    padding: 0.75rem 0;
-    margin: 0 0 0 1.85rem;
-    color: #282936;
-    font-weight: 700;
-    line-height: 1.6;
-    text-align: center;
-    text-transform: uppercase;
+    bottom: 0; 
+  
    }
    
    button:hover .circle {
     width: 100%;
+
    }
    
    button:hover .circle .icon.arrow {
     background: #fff;
+
     transform: translate(1rem, 0);
    }
    
