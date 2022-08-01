@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../Styles/Card.css'
-export default function Card({id, name, image,dietTypes, summary}) {
+export default function Card({id, name, image ,dietTypes, summary}) {
   return (
     
     <div className='card'>

@@ -66,7 +66,7 @@ const allType = useSelector((state)=>state.types)
       onChange={e=> handleFilterByDietType(e)}
       >
       <option hidden > Ordenado Tipos de comida</option>
-      <option value="all">All</option>
+      {/* <option value="all">All</option> */}
        {allType.map((e)=>{
         return <option key={e.name} value={e.name}>{e.name}</option>
       })} 
@@ -76,11 +76,10 @@ const allType = useSelector((state)=>state.types)
       {/* <label>Order By</label> */}
       <select onChange={(e)=>handleOrderBy(e)}>
       <option hidden>Ordenado Alfabeticamente</option>
-      <option value='all' key='all'>All</option>
+      {/* <option value='all' key='all'>All</option> */}
       <option value="ascendente" key='ascendente'>Ascendente A-Z</option>
       <option value="descendente" key='descendente'>Descendente Z-A</option>
-
-      <option value=""></option>
+      
       </select> 
      
    

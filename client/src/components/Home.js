@@ -6,12 +6,14 @@ import Cards from './Cards';
 import Paginate from './Paginate';
 import { getRecipes, getTypes,alphabeticalSort,filterByDietType, scoreSort } from '../actions/index';
 import Filters from './Filters';
+import Loading from './loading';
 import '../Styles/Home.css'
 
 export default function Home({setOrder}) {
   const dispatch = useDispatch();
     const recipes = useSelector((state) => state.recipes);
     const allTypes = useSelector((state)=> state.types)
+    const loading = useSelector(state => state.loading )
     // const sortScore = useSelector((state)=> state.recipes)
     console.log(recipes)
 
@@ -26,25 +28,7 @@ export default function Home({setOrder}) {
         setCurrentPage(pageNumber);
     }
 
-    // function handleScoreSort(e){
-    //   // dispatch(scoreSort(e.target.value))
-    //    e.preventDefault()
-    //    if(e.target.value !=='all'){
-    //      dispatch(scoreSort(e.target.value))
-    //      setCurrentPage(1)
-    //      // setFilter(e.target.value)
-    //    }else{
-    //      dispatch(getRecipes())
-    //      setCurrentPage(1)
-    //      // setFilter(`Ordenado ${e.target.value}`)
-    //    }
-       
-    //  }
-     
-
-    // useEffect(() =>{
-    //     dispatch(getRecipes());
-    // },[dispatch])
+  
     
   return (
     
@@ -53,7 +37,7 @@ export default function Home({setOrder}) {
     setCurrentPage={setCurrentPage}
     setFilter={setFilter}
     />
-     
+     {loading && <Loading/>}
     <Cards
     recipeByPage={recipeByPage}
     recipes={recipes}

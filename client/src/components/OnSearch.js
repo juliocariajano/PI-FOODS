@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch} from 'react-redux';
-import {onSearchName} from "../actions/index"
+import {getRecipes, onSearchName} from "../actions/index"
 import "../Styles/OnSearch.css"
 import { Link } from 'react-router-dom';
 export default function OnSearch({setCurrentPage}) {
@@ -26,6 +26,11 @@ function handleSubmit(e){
     }
 }
 
+function handleReset(e){
+e.preventDefault();
+dispatch(getRecipes());
+}
+
     return (
     <div className='input'>
       <input
@@ -40,7 +45,7 @@ function handleSubmit(e){
       <button className='btn'>CREATE RECIPE</button>
       </Link> 
       <br/>
-    <button className='btn'>Reset</button>  
+    <button className='btn' onClick={(e)=>handleReset(e)}>Reset</button>  
     
     </div>
     

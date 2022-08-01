@@ -2,6 +2,7 @@ const initialState={
     recipes:[],
     setRecipes:[],
     stateDetailRecipe:[],
+    loading:true,
     types:[],
 }
 
@@ -13,6 +14,7 @@ function reducer (state=initialState, action){
                 ...state,
                 recipes:action.payload,
                 setRecipes:action.payload,
+                loading:false
                 
             }
             case 'SEARCHBYNAME':

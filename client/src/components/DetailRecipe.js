@@ -1,12 +1,17 @@
 import React, { useEffect } from 'react'
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import {detailRecipe, setDetailRecipe} from "../actions/index"
 import { Link } from 'react-router-dom';
+import Loading from './loading';
 import "../Styles/DetailRecipe.css"
 export default function DetailRecipe() {
 const dispatch = useDispatch();
+
 const {id} = useParams();
+const [loading, setLoading]= useState(true);
+
 const recipeDetail = useSelector((state)=>state.stateDetailRecipe);
 console.log(recipeDetail)
 
@@ -16,7 +21,14 @@ useEffect(()=>{
 },[dispatch, id]);
  
     return (
+        <div className='general'>   
         <div className='container'>
+            {
+                setTimeout(() =>{
+                 setLoading(false)
+                 }, 5000)
+             } 
+        { loading === true? (<Loading setLoading= {setLoading}/>):
         <div className='box'>
         <div className='left'></div>
                 <div className='right'>
@@ -31,6 +43,8 @@ useEffect(()=>{
         <Link to="/home"><button className='btnt' >Volver a recetas</button></Link> 
     
     </div>
+    </div>
+}
     </div>
     </div>
   )

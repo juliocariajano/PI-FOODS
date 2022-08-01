@@ -82,6 +82,7 @@ useEffect(()=>{
 }, [dispatch]);
 
 return(
+    <div className='general'>
     <div className='container'>
         <div className='box'>
             <div className='left'></div>
@@ -181,7 +182,7 @@ return(
         </div>
         </div>
         </div>
-    
+        </div>
 )
 
 

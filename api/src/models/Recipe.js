@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
     },
     image:{
       type:DataTypes.STRING,
-      defaultValue:('https://images.pexels.com/photos/1414651/pexels-photo-1414651.jpeg?cs=srgb&dl=pexels-adonyi-g%C3%A1bor-1414651.jpg&fm=jpg')
+      defaultValue:('https://th.bing.com/th/id/R.b21ad12d1596fd9b84b1416b67d2f908?rik=dMavOk1kZBPU1Q&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f03%2fFood-PNG-Picture-180x180.png&ehk=M6cDdzk%2fnj3g0Y%2b5B%2bt8AWhEcT7nLkQ9B7JC%2bvWDP1A%3d&risl=&pid=ImgRaw&r=0')
     
     },
     score:{
