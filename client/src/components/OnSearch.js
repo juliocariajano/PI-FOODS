@@ -3,9 +3,19 @@ import { useDispatch} from 'react-redux';
 import {getRecipes, onSearchName} from "../actions/index"
 import "../Styles/OnSearch.css"
 import { Link } from 'react-router-dom';
+
+function validate(name){
+  let error = {};
+  if(!name || isNaN(name) !== true){
+   error.name = 'Requires a country'                             
+  }
+  return error;
+};
+
 export default function OnSearch({setCurrentPage}) {
 // const [msg, setMsg]= useState();
 // const[currentPage, setCurrentPage]= useState();
+const [error, setError] = useState({})
 const [name, setName] = useState("");
 const dispatch = useDispatch();
 
@@ -14,17 +24,28 @@ function handleInputChange(e){
     setName(e.target.value)
     // setMsg('')
 }
+// function handleSubmit(e){
+//     e.preventDefault()
+//         dispatch(onSearchName(name))
+//         setCurrentPage(1)
+//         setName('')
+    
+// }
+
+
 function handleSubmit(e){
-    e.preventDefault()
-    if(name){
-        dispatch(onSearchName(name))
-        setName('')
-        // setMsg('')
-        setCurrentPage(1)
-    }else{
-        alert('Please write a name');
-    }
-}
+  e.preventDefault()
+  setError()
+  setError(validate(name))
+  const validateError= validate(name)
+  if(Object.values(validateError).length !== 0){
+      alert('Please, require recipe')
+  }else{
+      dispatch(onSearchName(name))}
+      setCurrentPage(1); 
+      setName("");                                                                       
+};
+
 
 function handleReset(e){
 e.preventDefault();

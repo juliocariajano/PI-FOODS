@@ -1,4 +1,5 @@
 import React from 'react'
+import { Fragment } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useEffect, useState } from 'react';
 import Navbar from './Navbar';
@@ -31,13 +32,12 @@ export default function Home({setOrder}) {
   
     
   return (
-    
     <div className='general'>
     <Navbar
     setCurrentPage={setCurrentPage}
     setFilter={setFilter}
     />
-     {loading && <Loading/>}
+     {loading && <Loading/>} 
     <Cards
     recipeByPage={recipeByPage}
     recipes={recipes}
@@ -47,6 +47,7 @@ export default function Home({setOrder}) {
     setCurrentPage={setCurrentPage}
     />
    
-    </div>
+    </div> 
+  
   )
 }

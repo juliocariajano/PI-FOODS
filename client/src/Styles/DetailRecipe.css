@@ -31,7 +31,7 @@
     align-items: center;
     width: 960px;
     height: 100%;
-    padding: 20px 100px; 
+    padding: 20px 100px;
 
 }
 .container:after{
@@ -63,6 +63,10 @@
     height: 100%;
     background: url("../img/form2.jpg") no-repeat center;
     background-size: cover;
+}
+.img{
+    width: 312px;
+    height: 231px;
 }
 .right{
     padding: 25px, 40px;

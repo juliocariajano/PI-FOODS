@@ -16,7 +16,7 @@ export default function Loading({setLoading}){
     //          }
     //      </div>
     // </div>
-    <div className="general" >
+ <div className="genera" >
    <div className= "loader">
     {/* <span>Loading...</span>
             {
@@ -26,7 +26,7 @@ export default function Loading({setLoading}){
              } */}
             
     </div>
-    </div>
+  </div>
     
     )
 }
