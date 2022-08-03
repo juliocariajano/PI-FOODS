@@ -15,12 +15,14 @@ export default function Paginate(
   }
 
     return (
-    <div >
+    <div className='with' >
         <ul>
             <button className='butto' onClick={()=>
-            setCurrentPage(currentPage ===1 ? currentPage: currentPage-1)}>
+            setCurrentPage(currentPage ===1 ? 
+            currentPage:
+             currentPage-1)}>
             Prev</button>
-            {PageNumber && PageNumber.map((number)=>(
+            {PageNumber && PageNumber.map((number)=>( number ===currentPage &&
             <button className='butto'
             key={number}
             onClick={()=> paginate(number)}>

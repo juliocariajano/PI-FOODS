@@ -24,6 +24,12 @@
     /* background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); */
     ;
 }
+
+.img-container{
+    height: 300px;
+
+    
+}
 .container{
     position: relative;
     display: flex;
@@ -69,6 +75,8 @@
     height: 231px;
 }
 .right{
+    display: flex;
+    flex-direction:column;
     padding: 25px, 40px;
 }
 h2{

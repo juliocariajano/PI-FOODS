@@ -32,7 +32,7 @@ useEffect(()=>{
                 <div className='right'>
         <h2>DETAIL</h2>
     
-        <img src= {recipeDetail.length ? recipeDetail[0].image:"Imagen no encontrada"}/>
+        <img className='img-container' src= {recipeDetail.length ? recipeDetail[0].image:"Imagen no encontrada"}/>
         <h2> Receta:{recipeDetail.length? recipeDetail[0].name:"Cargando"}</h2>
         <h5>Types:{recipeDetail.length? recipeDetail[0].dishTypes:"Cargando"}</h5> 
         <h5>Dietas:{recipeDetail.length? recipeDetail[0].dietTypes:"Tipos Dietas"}</h5>

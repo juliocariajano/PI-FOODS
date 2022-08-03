@@ -17,13 +17,9 @@ return (
             image={e.image}
             dietTypes={e.dietTypes}
             />
-            
-            
-
-        )
+         )
     })
     }
-    
     </div>
     <Paginate
     recipeByPage={recipeByPage}

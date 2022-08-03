@@ -4,21 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import { addRecipes, getTypes } from '../actions';
 import "../Styles/CreateRecipe.css"
-function validate(input){
-    let errors = {};
-    if (!input.name || isNaN(input.name) === false) errors.name = 'Por favor complete el nombre de la receta';
-    if (!input.summary) errors.summary = 'Por favor agregue algun comentrio ';
-    if (input.score < 1 || input.score > 100) errors.score = 'El puntaje debe ser un valor entre 1 y 100';
-    if (input.healthScore < 1 || input.healthScore > 100) errors.healthScore = 'El valor saludable debe ser un numero entre 1 y 100';
-    if (!input.steps.length) errors.steps = 'Por favor, detalle los pasos a seguir de su receta';
-    return errors;
-}
+
 
 export default function CreateRecipe() {
 const dispatch = useDispatch();
 const history = useNavigate();
 const type= useSelector(state => state.types);
-const [errors, setErrors] = useState({})
 const [input, setInput] = useState({
     name:'',
     summary:'',
@@ -33,10 +24,7 @@ function handleChange(e){
         ...input,
         [e.target.name]:e.target.value
     })
-    setErrors(validate({
-        ...input,
-        [e.target.name]:e.target.value
-    }))
+
 };
 
 function handleSelect(e){
@@ -49,15 +37,9 @@ function handleSelect(e){
 
 function handleSubmit(e){
     e.preventDefault()
-    setErrors(validate(
-        input
-    ))
-    const recotraError = validate(input)
-    if(Object.values(recotraError).length !== 0 || !input.dietTypes.length){
-        alert("Todos los campos deben estar llenos")
-    }else{
+ 
     dispatch(addRecipes(input))
-    alert("Receta creada correctamente!")
+    alert('created')
     setInput({
         name:'',
         summary:'',
@@ -66,8 +48,10 @@ function handleSubmit(e){
         steps: [],
         dietTypes: []
     })
+    setTimeout(function(){
     history('/home')
-}
+}, 5000)
+
 }
 
 function handleDelete(e){
@@ -81,6 +65,37 @@ useEffect(()=>{
     dispatch(getTypes());
 }, [dispatch]);
 
+const alert = function(error){
+    if (error !== 'undefined') {
+      const mod = document.getElementById('alert')
+      const modText = document.getElementById('content-text')
+      if (error === 'created') {
+        mod.style.cssText = 'display: flex; background-color: rgba(79, 240, 10, 0.87); min-height: 40px; width: 430px; border-radius: 50px; margin-top: 7px; padding: 20px;'
+        modText.innerHTML = '<strong>¡Congratulations!</strong>.' `Tu receta <strong>${input.name} Fue registrada con exito</strong>`
+        setTimeout(function(){
+          mod.style.display='none'
+        }, 5000)
+      }else {
+        mod.style.cssText = 'display: flex; background-color: rgba(240, 10, 10, 0.87); min-height: 40px; width: 430px; border-radius: 50px; margin-top: 7px; padding: 20px;'
+        modText.innerHTML = '<strong>¡Stop!</strong>. No puedes dejar el ' + `${error}` + ' vacio. Por favor completa todas las campos'
+        setTimeout(function(){
+          mod.style.display='none'
+        }, 3000)
+      }
+    }
+  }
+
+  const funcion = function(){
+    let f = input;
+    for(const e in f) {
+      if (!f[e] || !f[e].length) {
+        alert(e)
+      }else {
+        continue
+      }break
+    }
+  }
+
 return(
     <div className='general'>
     <div className='container'>
@@ -88,6 +103,9 @@ return(
             <div className='left'></div>
                 <div className='right'>
         <h2>Creá tu receta</h2>
+        <div className="content__alert" id='alert' style={{display: "none"}}>
+         <div id='content-text' ></div>
+      </div>
         <form onSubmit={(e)=>handleSubmit(e)}>
             
                 <input
@@ -98,9 +116,9 @@ return(
                 name= "name"
                 onChange={(e)=>handleChange(e)}
                 />
-                {errors.name && (
+                {/* {errors.name && (
                     <p >{errors.name}</p>
-                )}
+                )} */}
             
                 <input
                 className='field'
@@ -110,9 +128,9 @@ return(
                 name= "summary"
                 onChange={(e)=>handleChange(e)}
                 />
-                {errors.summary && (
+                {/* {errors.summary && (
                     <p >{errors.summary}</p>
-                )}
+                )} */}
                 <input
                 className='field'
                 max={100}
@@ -124,9 +142,9 @@ return(
                 name= "score"
                 onChange={(e)=>handleChange(e)}
                 />
-                {errors.score && (
+                {/* {errors.score && (
                     <p>{errors.score}</p>
-                )}
+                )} */}
               <input
                 className='field'
                  max={100}
@@ -138,9 +156,9 @@ return(
                 name= "healthScore"
                 onChange={(e)=>handleChange(e)}
                 />
-                 {errors.healthScore && (
+                 {/* {errors.healthScore && (
                     <p >{errors.healthScore}</p>
-                )}
+                )} */}
             
                 <textarea
                 className='field area'
@@ -150,15 +168,16 @@ return(
                 name= "steps"
                 onChange={(e)=>handleChange(e)}
                 />
-                {errors.steps && (
+                {/* {errors.steps && (
                     <p >{errors.steps}</p>
-                )}
+                )} */}
             <label>Agrega dieta(s) a la receta</label>
             <select onChange={(e)=>handleSelect(e)}>
                 <option hidden>Seleccionar una o varios Tipos de Dieta</option>
                 
-                {!input.dietTypes.length && (
-                    <p>{errors.dietTypes}</p>)}
+                {/* {!input.dietTypes.length && (
+                    <p>{errors.dietTypes}</p>)} */}
+                    
                     {type.map((typ)=>(
                         <option value={typ.name}>{typ.name}</option>
                     ))}
@@ -170,8 +189,22 @@ return(
                 <button key={e} className="textdelete" onClick={()=> handleDelete(e)}>{'==> X'}</button>
             </div>
             )}
-        <div>
-        <button className='btnt' type="submit">Crear receta</button>
+        <div className='button-div' onMouseEnter={funcion}>
+        <button 
+        className='btnt' 
+        type="submit"
+        value= 'create'
+        id="form-button"
+        onClick={handleSubmit}
+        disabled={
+            !input.name ||
+            !input.summary ||
+            !input.score ||
+            !input.healthScore ||
+            !input.steps||
+            !input.dietTypes.length    
+        }
+        >Crear receta</button>
         </div><br/>
         <></>
         <Link to='/home'><button className='btnt' >Volver</button></Link>

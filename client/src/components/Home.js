@@ -28,6 +28,7 @@ export default function Home() {
     <div className='general'>
     <Navbar
     setCurrentPage={setCurrentPage}
+    
     setFilter={setFilter}
     />
      {loading && <Loading/>} 
