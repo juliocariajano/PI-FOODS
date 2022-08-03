@@ -89,6 +89,12 @@ h2:after{
     margin-bottom: 22px;
     transition: .3s;
 }
+.textdelete{
+    font-size: 14px;
+    color: red;
+
+    
+}
 .field:hover{
     background-color: rgba(0, 0, 0, 0.1);
 }

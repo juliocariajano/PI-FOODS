@@ -15,10 +15,7 @@ return (
             id={e.id}
             name={e.name}
             image={e.image}
-            // summary={e.summary}
             dietTypes={e.dietTypes}
-            // score={e.score}
-            // steps={e.steps}
             />
             
             

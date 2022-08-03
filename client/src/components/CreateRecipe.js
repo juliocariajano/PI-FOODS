@@ -31,7 +31,7 @@ const [input, setInput] = useState({
 function handleChange(e){
     setInput({
         ...input,
-        [e.target.name]:e.target.value//en la medida que se valla modificando el input, se va cargando la info
+        [e.target.name]:e.target.value
     })
     setErrors(validate({
         ...input,
@@ -162,12 +162,12 @@ return(
                     {type.map((typ)=>(
                         <option value={typ.name}>{typ.name}</option>
                     ))}
-
-                
+               
             </select>
              {input.dietTypes.map(e=>
             <div>
-                <spam onClick={()=>handleDelete(e)}>{e}</spam>
+                <spam onClick={()=>handleDelete(e)} >{e}{" "}</spam>
+                <button key={e} className="textdelete" onClick={()=> handleDelete(e)}>{'==> X'}</button>
             </div>
             )}
         <div>

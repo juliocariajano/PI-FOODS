@@ -6,14 +6,12 @@ import {detailRecipe, setDetailRecipe} from "../actions/index"
 import { Link } from 'react-router-dom';
 import Loading from './loading';
 import "../Styles/DetailRecipe.css"
+
 export default function DetailRecipe() {
 const dispatch = useDispatch();
-
 const {id} = useParams();
 const [loading, setLoading]= useState(true);
-
 const recipeDetail = useSelector((state)=>state.stateDetailRecipe);
-console.log(recipeDetail)
 
 useEffect(()=>{
     dispatch(detailRecipe(id))

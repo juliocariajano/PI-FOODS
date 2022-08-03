@@ -1,23 +1,17 @@
 import React from 'react'
-import { Fragment } from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import { useEffect, useState } from 'react';
+import {useSelector} from 'react-redux';
+import { useState } from 'react';
 import Navbar from './Navbar';
 import Cards from './Cards';
-import Paginate from './Paginate';
-import { getRecipes, getTypes,alphabeticalSort,filterByDietType, scoreSort } from '../actions/index';
-import Filters from './Filters';
+
 import Loading from './loading';
 import '../Styles/Home.css'
 
-export default function Home({setOrder}) {
-  const dispatch = useDispatch();
+export default function Home() {
+  
     const recipes = useSelector((state) => state.recipes);
-    const allTypes = useSelector((state)=> state.types)
+    
     const loading = useSelector(state => state.loading )
-    // const sortScore = useSelector((state)=> state.recipes)
-    console.log(recipes)
-
     const[currentPage, setCurrentPage]= useState(1);
     const[recipeByPage]=useState(9);
     const [filter, setFilter]= useState('');
@@ -29,8 +23,7 @@ export default function Home({setOrder}) {
         setCurrentPage(pageNumber);
     }
 
-  
-    
+   
   return (
     <div className='general'>
     <Navbar

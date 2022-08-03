@@ -6,7 +6,7 @@ const {API_KEY} = process.env;
 
 
 const getInfoApi = async ()=>{
-    const apiEndPoint = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=bfd92a5faacd41618128ad2e2d81a78b&addRecipeInformation=true&number=100`)
+    const apiEndPoint = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=c64e0e0fb5cd436ca2be7d3bb7a0c352&addRecipeInformation=true&number=100`)
     const infoApiEndPoint = await apiEndPoint.data.results.map((e)=>{
         return {
             id:e.id,
@@ -14,7 +14,7 @@ const getInfoApi = async ()=>{
             name:e.title,
             dietTypes: e.diets,
             summary: e.summary,
-            // score:e.spoonacularScore,
+            score:('hola'),
             healthScore:e.healthScore,
             dishTypes:e.dishTypes,
             steps:e.analyzedInstructions[0]? e.analyzedInstructions[0].steps.map((e)=>{
@@ -36,7 +36,7 @@ const getDbInfo= async ()=>{
             name:e.name,
             summary:e.summary,
             image: e.image,
-            // score:e.spoonacularScore,
+            score:e.score,
             healthScore: e.healthScore,
             dietTypes: e.Types?.map(e=>e.name),
             steps: e.steps

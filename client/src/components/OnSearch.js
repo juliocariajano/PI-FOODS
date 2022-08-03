@@ -7,14 +7,12 @@ import { Link } from 'react-router-dom';
 function validate(name){
   let error = {};
   if(!name || isNaN(name) !== true){
-   error.name = 'Requires a country'                             
+   error.name = 'Require a Recipe'                             
   }
   return error;
 };
 
 export default function OnSearch({setCurrentPage}) {
-// const [msg, setMsg]= useState();
-// const[currentPage, setCurrentPage]= useState();
 const [error, setError] = useState({})
 const [name, setName] = useState("");
 const dispatch = useDispatch();
@@ -22,15 +20,8 @@ const dispatch = useDispatch();
 function handleInputChange(e){
     e.preventDefault()
     setName(e.target.value)
-    // setMsg('')
 }
-// function handleSubmit(e){
-//     e.preventDefault()
-//         dispatch(onSearchName(name))
-//         setCurrentPage(1)
-//         setName('')
-    
-// }
+
 
 
 function handleSubmit(e){
@@ -61,7 +52,6 @@ dispatch(getRecipes());
         onChange={(e)=>{handleInputChange(e)}}
         />
         {<button className='btn' type='submit' onClick={(e)=>handleSubmit(e)}>Search</button>}
-        {/* {msg.length > 0 && (<div> <p>{msg}</p></div>)} */}
         <Link to="/recipe" >
       <button className='btn'>CREATE RECIPE</button>
       </Link> 
