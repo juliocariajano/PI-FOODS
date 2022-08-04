@@ -24,9 +24,7 @@ module.exports = (sequelize) => {
       defaultValue:("https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/healthy-eating-ingredients-1296x728-header.jpg?w=1575")
     
     },
-    score:{
-      type: DataTypes.INTEGER,
-    },
+    
     healthScore:{
       type:DataTypes.INTEGER,
     },

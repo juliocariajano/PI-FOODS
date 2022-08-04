@@ -14,7 +14,6 @@ const getInfoApi = async ()=>{
             name:e.title,
             dietTypes: e.diets,
             summary: e.summary,
-            score:('hola'),
             healthScore:e.healthScore,
             dishTypes:e.dishTypes,
             steps:e.analyzedInstructions[0]? e.analyzedInstructions[0].steps.map((e)=>{
@@ -36,7 +35,6 @@ const getDbInfo= async ()=>{
             name:e.name,
             summary:e.summary,
             image: e.image,
-            score:e.score,
             healthScore: e.healthScore,
             dietTypes: e.Types?.map(e=>e.name),
             steps: e.steps

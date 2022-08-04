@@ -13,7 +13,6 @@ const type= useSelector(state => state.types);
 const [input, setInput] = useState({
     name:'',
     summary:'',
-    score:'',
     healthScore:'',
     steps:[],
     dietTypes: []
@@ -43,7 +42,6 @@ function handleSubmit(e){
     setInput({
         name:'',
         summary:'',
-        score: '',
         healthScore: '',
         steps: [],
         dietTypes: []
@@ -71,7 +69,7 @@ const alert = function(error){
       const modText = document.getElementById('content-text')
       if (error === 'created') {
         mod.style.cssText = 'display: flex; background-color: rgba(79, 240, 10, 0.87); min-height: 40px; width: 430px; border-radius: 50px; margin-top: 7px; padding: 20px;'
-        modText.innerHTML = '<strong>¡Congratulations!</strong>.' `Tu receta <strong>${input.name} Fue registrada con exito</strong>`
+        modText.innerHTML = '<strong>¡Congratulations!</strong>. You created ' + `<strong>${input.name}</strong>`
         setTimeout(function(){
           mod.style.display='none'
         }, 5000)
@@ -116,10 +114,7 @@ return(
                 name= "name"
                 onChange={(e)=>handleChange(e)}
                 />
-                {/* {errors.name && (
-                    <p >{errors.name}</p>
-                )} */}
-            
+                         
                 <input
                 className='field'
                 type="text"
@@ -128,23 +123,7 @@ return(
                 name= "summary"
                 onChange={(e)=>handleChange(e)}
                 />
-                {/* {errors.summary && (
-                    <p >{errors.summary}</p>
-                )} */}
-                <input
-                className='field'
-                max={100}
-                min={0}
-            
-                type="number"
-                placeholder="Puntaje"
-                value={input.score}
-                name= "score"
-                onChange={(e)=>handleChange(e)}
-                />
-                {/* {errors.score && (
-                    <p>{errors.score}</p>
-                )} */}
+                               
               <input
                 className='field'
                  max={100}
@@ -156,10 +135,7 @@ return(
                 name= "healthScore"
                 onChange={(e)=>handleChange(e)}
                 />
-                 {/* {errors.healthScore && (
-                    <p >{errors.healthScore}</p>
-                )} */}
-            
+                           
                 <textarea
                 className='field area'
                 type="text"
@@ -168,16 +144,12 @@ return(
                 name= "steps"
                 onChange={(e)=>handleChange(e)}
                 />
-                {/* {errors.steps && (
-                    <p >{errors.steps}</p>
-                )} */}
+               
             <label>Agrega dieta(s) a la receta</label>
             <select onChange={(e)=>handleSelect(e)}>
                 <option hidden>Seleccionar una o varios Tipos de Dieta</option>
                 
-                {/* {!input.dietTypes.length && (
-                    <p>{errors.dietTypes}</p>)} */}
-                    
+                                    
                     {type.map((typ)=>(
                         <option value={typ.name}>{typ.name}</option>
                     ))}
@@ -199,7 +171,6 @@ return(
         disabled={
             !input.name ||
             !input.summary ||
-            !input.score ||
             !input.healthScore ||
             !input.steps||
             !input.dietTypes.length    

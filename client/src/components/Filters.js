@@ -42,10 +42,10 @@ export default function Filters({setFilter, setCurrentPage, allTypes}) {
       <select 
       onChange={(e)=>handleScoreSort(e)}
        >
-      <option hidden> Ordenado Comida Saludable</option>
+      <option hidden> Healthy Food         </option>
       {/* <option value='all' key='all'>All</option> */}
-        <option value="scoremin">Menor Nivel de comida Saludable</option>
-        <option value="scoremax">Mayor Nivel de comida Saludable</option>
+        <option value="scoremin">Less healthy</option>
+        <option value="scoremax">Healthy Mus</option>
       
       </select>
 
@@ -53,7 +53,7 @@ export default function Filters({setFilter, setCurrentPage, allTypes}) {
       <select 
       onChange={e=> handleFilterByDietType(e)}
       >
-      <option hidden > Ordenado Tipos de comida</option>
+      <option hidden > Types of Diet    </option>
       {/* <option value="all">All</option> */}
        {allType.map((e)=>{
         return <option key={e.name} value={e.name}>{e.name}</option>
@@ -63,10 +63,10 @@ export default function Filters({setFilter, setCurrentPage, allTypes}) {
 
       {/* <label>Order By</label> */}
       <select onChange={(e)=>handleOrderBy(e)}>
-      <option hidden>Ordenado Alfabeticamente</option>
+      <option hidden>Alphabetical Order</option>
       {/* <option value='all' key='all'>All</option> */}
-      <option value="ascendente" key='ascendente'>Ascendente A-Z</option>
-      <option value="descendente" key='descendente'>Descendente Z-A</option>
+      <option value="ascendente" key='ascendente'>Ascendent A-Z</option>
+      <option value="descendente" key='descendente'>Descendent Z-A</option>
       
       </select> 
      

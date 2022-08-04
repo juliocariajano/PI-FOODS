@@ -37,7 +37,6 @@ useEffect(()=>{
         <h5>Types:{recipeDetail.length? recipeDetail[0].dishTypes:"Cargando"}</h5> 
         <h5>Dietas:{recipeDetail.length? recipeDetail[0].dietTypes:"Tipos Dietas"}</h5>
         <h5>summary:{recipeDetail.length? recipeDetail[0].summary.replace(/<[^>]*>/g, ''):"Cargando"}</h5>
-        <h5>Score:{recipeDetail.length? recipeDetail[0].score:"Cargando"}</h5>
         <h5>healthScore:{recipeDetail.length? recipeDetail[0].healthScore:"Cargando"} </h5>
         <h5>Pasos:{recipeDetail.length? recipeDetail[0].steps[0].step?recipeDetail[0].steps.map(e=>e.step):recipeDetail[0].steps:"Cargando"}</h5>  
         <Link to="/home"><button className='btnt' >Volver a recetas</button></Link> 

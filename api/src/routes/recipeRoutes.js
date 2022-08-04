@@ -89,13 +89,12 @@ router.get('/order/:info',async(req, res)=>{
 router.put('/update/:id', async (req, res)=>{
         try {
           const {id} = req.params;
-          const { name, summary, score, healthScore, steps, dietTypes } = req.body;
+          const { name, summary, healthScore, steps, dietTypes } = req.body;
 
           const editRecipe = await Recipe.update(
             {
                 name, 
                 summary, 
-                score, 
                 healthScore, 
                 steps, 
              },
