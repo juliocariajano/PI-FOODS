@@ -13,6 +13,7 @@ const getInfoApi = async ()=>{
             image:e.image,
             name:e.title,
             dietTypes: e.diets,
+            createDb:e.createDb,
             summary: e.summary,
             healthScore:e.healthScore,
             dishTypes:e.dishTypes,
@@ -36,6 +37,7 @@ const getDbInfo= async ()=>{
             summary:e.summary,
             image: e.image,
             healthScore: e.healthScore,
+            createDb:e.createDb,
             dietTypes: e.Types?.map(e=>e.name),
             steps: e.steps
            

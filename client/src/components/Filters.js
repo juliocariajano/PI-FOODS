@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getRecipes, getTypes, alphabeticalSort, filterByDietType, scoreSort } from '../actions/index.js'
+import { getRecipes, getTypes, alphabeticalSort, filterByDietType, scoreSort,filterOrigin } from '../actions/index.js'
 import {Link} from "react-router-dom"
 import'../Styles/Filters.css'
+
 export default function Filters({setFilter, setCurrentPage, allTypes}) {
   const dispatch =useDispatch();
   const allType = useSelector((state)=>state.types)
@@ -24,7 +25,14 @@ export default function Filters({setFilter, setCurrentPage, allTypes}) {
         setFilter(`Ordenado ${e.target.value}`);
       }
     }
-    
+    function handleFilterOrigin(e){
+      e.preventDefault()
+      dispatch(filterOrigin(e.target.value))
+      setCurrentPage(1)
+      setFilter(e.target.value)
+
+      
+    }
     function handleScoreSort(e){
       e.preventDefault()
         dispatch(scoreSort(e.target.value))
@@ -39,6 +47,14 @@ export default function Filters({setFilter, setCurrentPage, allTypes}) {
 
   return (
     <div className='content'>
+      <select
+      onChange={(e)=>handleFilterOrigin(e)}
+      >
+      <option hidden>By Origin</option>
+      <option value='all'>All</option>
+      <option value="database">Database</option>
+      <option value='api'>Api</option>
+      </select>
       <select 
       onChange={(e)=>handleScoreSort(e)}
        >

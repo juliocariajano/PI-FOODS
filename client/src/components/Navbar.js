@@ -12,7 +12,7 @@ export default function Navbar({setCurrentPage, setFilter}) {
       <Filters
     
       setCurrentPage={setCurrentPage}
-       setFilter={setFilter}
+      setFilter={setFilter}
     />
     </div>
     <Link to='/home'>

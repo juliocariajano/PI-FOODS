@@ -1,4 +1,4 @@
-const { DataTypes, UUIDV4, DATE } = require('sequelize');
+const { DataTypes, UUIDV4 } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
@@ -22,9 +22,7 @@ module.exports = (sequelize) => {
     image:{
       type:DataTypes.STRING,
       defaultValue:("https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/healthy-eating-ingredients-1296x728-header.jpg?w=1575")
-    
     },
-    
     healthScore:{
       type:DataTypes.INTEGER,
     },

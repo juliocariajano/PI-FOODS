@@ -75,6 +75,12 @@ export function alphabeticalSort(payload){
         payload
     }
 }
+export function filterOrigin(payload){
+    return {
+        type: "FILTER_ORIGIN",
+        payload
+    }
+}
 export function addRecipes(payload){
     return async function(dispatch){
         var json = await axios.post("/recipe", payload)

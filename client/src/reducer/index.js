@@ -4,6 +4,7 @@ const initialState={
     stateDetailRecipe:[],
     loading:true,
     types:[],
+    filtrado:[]
 }
 
 
@@ -52,19 +53,34 @@ function reducer (state=initialState, action){
                   ...state,
                   recipes: filter,
                 }
-            // case 'FILTER_BY_ORIGIN':
-            //     const allRecipes1 = state.allrecipes;
-            //     const filterByOrigin=
-            //     action.payload === 'all' 
-            //     ?allRecipes1
-            //     :action.payload === 'api'
-            //     ? allRecipes1.filter(elem=> isNaN(elem.id)===false)
-            //     :allRecipes1.filter(elem=> isNaN(elem.id)!==false)
-            //     return {
-            //         ...state,
-            //         recipes: filterByOrigin[0]?filterByOrigin:[{msg: ` there is no recipe created, please create a new recipe`}],
-            //         types:filterByOrigin
-            //     } 
+            case 'FILTER_ORIGIN':
+                const recipesSort = state.recipes;
+                const filterByOrigin= action.payload === 'all'
+                ?recipesSort: action.payload === 'api' 
+                ?recipesSort.filter((e)=> e.createDb===false)
+                :recipesSort.filter((e)=>e.createDb===true)
+                return{
+                    ...state,
+                    pokemons: filterByOrigin[0]?filterByOrigin:[{msg:`there is no recipe created, please create a new recipe`}],
+                    recipes:filterByOrigin
+                }
+                // case FILTER_BY_ORIGIN:
+                //     const allPokemons1= state.pokemonsAll;
+                //     const filterPokemonOrigin=
+                //     action.payload === 'all' 
+                //     ?allPokemons1
+                //     :action.payload === 'api'
+                //     ? allPokemons1.filter(elem=> isNaN(elem.id)===false)
+                //     :allPokemons1.filter(elem=> isNaN(elem.id)!==false)
+                //     return {
+                //         ...state,
+                //         pokemons: filterPokemonOrigin[0]?filterPokemonOrigin:[{msg: ` there is no pokemon created, please create a new pokemon`}],
+                //         filtrados1:filterPokemonOrigin
+        
+                //       };
+                
+               
+            
             case 'ALPHABETICAL_SORT':
             const filterOrder = action.payload === "ascendente"? state.recipes.sort((a,b)=> a.name.localeCompare(b.name)) : state.recipes.sort((a,b)=>b.name.localeCompare(a.name));
                 return {

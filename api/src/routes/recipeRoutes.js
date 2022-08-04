@@ -9,8 +9,7 @@ const { v4: uuidv4 } = require('uuid');
 router.get('/', async(req,res)=>{
 const {name} = req.query;
 let allRecipes = await getAllRecipes();
-// res.status(200).send(allRecipes)
-// console.log(allRecipes + 'Ruta recipe')
+
 if(name){
     const recipeName = await allRecipes.filter((e)=> e.name.toLowerCase().startsWith(name.toLowerCase()));
     recipeName.length? res.status(200).send(recipeName): res.status(404).send("Receta no encontrada");
@@ -18,6 +17,7 @@ if(name){
     res.status(200).send(allRecipes);
 }
 })
+
 
 router.post("/", async (req, res) => {
     let { name, summary, score, healthScore, steps, dietTypes } = req.body;
@@ -45,7 +45,6 @@ router.post("/", async (req, res) => {
         console.log(error)
     }
 })
-
 
 router.get('/:id',async(req,res)=>{
     let {id} =req.params;
