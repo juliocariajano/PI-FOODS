@@ -27,7 +27,8 @@ function handleChange(e){
 };
 
 function handleSelect(e){
-    if(!input.dietTypes.includes(e.target.value)){
+    if(!input.dietTypes.includes(e.target.value))//evita que se duplique la eleccion tipo de dietas
+    {
         setInput({
         ...input,
         dietTypes:[...input.dietTypes, e.target.value]

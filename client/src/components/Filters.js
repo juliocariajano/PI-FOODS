@@ -28,19 +28,17 @@ export default function Filters({setFilter, setCurrentPage, allTypes}) {
     function handleFilterOrigin(e){
       e.preventDefault()
       dispatch(filterOrigin(e.target.value))
-      setCurrentPage(1)
-      setFilter(e.target.value)
-
-      
-    }
+       setCurrentPage(1)
+      }
+    
     function handleScoreSort(e){
       e.preventDefault()
         dispatch(scoreSort(e.target.value))
         setCurrentPage(1)
+        setFilter(e.target.value)
       }
-
-  
-  useEffect(()=>{
+           
+    useEffect(()=>{
     dispatch(getRecipes())
     dispatch(getTypes())
   },[dispatch])
@@ -51,10 +49,12 @@ export default function Filters({setFilter, setCurrentPage, allTypes}) {
       onChange={(e)=>handleFilterOrigin(e)}
       >
       <option hidden>By Origin</option>
-      <option value='all'>All</option>
+      {/* <option value='all'>All</option> */}
       <option value="database">Database</option>
       <option value='api'>Api</option>
       </select>
+
+      
       <select 
       onChange={(e)=>handleScoreSort(e)}
        >

@@ -4,9 +4,7 @@ const initialState={
     stateDetailRecipe:[],
     loading:true,
     types:[],
-    filtrado:[]
 }
-
 
 function reducer (state=initialState, action){
     switch(action.type){
@@ -53,33 +51,18 @@ function reducer (state=initialState, action){
                   ...state,
                   recipes: filter,
                 }
-            case 'FILTER_ORIGIN':
-                const recipesSort = state.recipes;
-                const filterByOrigin= action.payload === 'all'
-                ?recipesSort: action.payload === 'api' 
-                ?recipesSort.filter((e)=> e.createDb===false)
-                :recipesSort.filter((e)=>e.createDb===true)
+
+               case 'FILTER_ORIGIN':
+                const recipesSort = state.setRecipes;
+                console.log(recipesSort)
+                //const recipeSort1 = state.recipes;
+                const filterByOrigin = action.payload ==='database'
+                ?recipesSort.filter((e)=> e.createDb)
+                :recipesSort.filter((e)=> !e.createDb )
                 return{
                     ...state,
-                    pokemons: filterByOrigin[0]?filterByOrigin:[{msg:`there is no recipe created, please create a new recipe`}],
-                    recipes:filterByOrigin
-                }
-                // case FILTER_BY_ORIGIN:
-                //     const allPokemons1= state.pokemonsAll;
-                //     const filterPokemonOrigin=
-                //     action.payload === 'all' 
-                //     ?allPokemons1
-                //     :action.payload === 'api'
-                //     ? allPokemons1.filter(elem=> isNaN(elem.id)===false)
-                //     :allPokemons1.filter(elem=> isNaN(elem.id)!==false)
-                //     return {
-                //         ...state,
-                //         pokemons: filterPokemonOrigin[0]?filterPokemonOrigin:[{msg: ` there is no pokemon created, please create a new pokemon`}],
-                //         filtrados1:filterPokemonOrigin
-        
-                //       };
+                    recipes: filterByOrigin}; 
                 
-               
             
             case 'ALPHABETICAL_SORT':
             const filterOrder = action.payload === "ascendente"? state.recipes.sort((a,b)=> a.name.localeCompare(b.name)) : state.recipes.sort((a,b)=>b.name.localeCompare(a.name));
@@ -87,17 +70,31 @@ function reducer (state=initialState, action){
                     ...state,
                     recipes:filterOrder
                 }
+          
             case 'SCORE_SORT':
-                return{
-                    ...state,
-                    recipes:action.payload,
-                }
-               default:
-                return{
-
-                    ...state
-                }
+            let sortByAlfa = [...state.recipes]
+            sortByAlfa = action.payload === "scoremin"?
+            state.recipes.sort(function(a, b){
+                if(a.healthScore > b.healthScore) return 1;
+                 if(a.healthScore < b.healthScore) return -1;
+                    return 0;
+                }):
+            state.recipes.sort(function(a, b){
+                if(a.healthScore < b.healthScore){
+                    return 1};
+                if(a.healthScore > b.healthScore){
+                    return -1};
+                    return 0;
+                });
+            return{
+                ...state,
+                recipes: sortByAlfa
+            };
+            
+           default:
+             return{
+                ...state
+            }
     }
 }
-
 export default reducer;

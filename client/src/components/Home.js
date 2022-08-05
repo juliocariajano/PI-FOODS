@@ -10,15 +10,15 @@ import '../Styles/Home.css'
 export default function Home() {
   
     const recipes = useSelector((state) => state.recipes);
-    
     const loading = useSelector(state => state.loading )
     const[currentPage, setCurrentPage]= useState(1);
     const[recipeByPage]=useState(9);
     const [filter, setFilter]= useState('');
+    
     let indexLastRecipe = currentPage * recipeByPage;
     let indexFirstRecipe = indexLastRecipe - recipeByPage;
     let currentRecipe = recipes.slice(indexFirstRecipe,indexLastRecipe);
-
+    console.log(recipes)
     const paginate= (pageNumber) =>{
         setCurrentPage(pageNumber);
     }

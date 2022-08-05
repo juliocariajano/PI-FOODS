@@ -6,11 +6,10 @@ import  "../Styles/Cards.css"
 export default function Cards({ recipeByPage, recipes, paginate, currentRecipe, setCurrentPage,currentPage}) {
 return (
     <div >
- 
     <div className='gallery'>
     {currentRecipe.map((e)=>{
         return (
-            
+    
             <Card
             id={e.id}
             name={e.name}

@@ -31,7 +31,6 @@ export function setDetailRecipe(){
         payload:[]
     }
 }
-
 export function onSearchName(payload){
     return async function(dispatch){
         try {
@@ -46,13 +45,11 @@ export function onSearchName(payload){
            
         } catch (error) {
             if(error.response)
-            // return dispatch({
                 alert(error.response.data)
-                      
+             
         }
     }
 }
-
 export function getTypes(){
     return async function (dispatch){
         var json = await axios.get("/type", {})
@@ -69,6 +66,7 @@ export function filterByDietType(payload){
         payload
     }
 };
+
 export function alphabeticalSort(payload){
     return {
         type: "ALPHABETICAL_SORT",
@@ -87,19 +85,11 @@ export function addRecipes(payload){
         return json
     }
 }
-export function scoreSort(filter){
-return async function (dispatch){
-    var info = await axios.get(`/recipe/order/${filter}`)
-    return dispatch ({
+export function scoreSort(payload){
+    return ({
         type:'SCORE_SORT',
-        payload:info.data,
+        payload
     })
 }
-} 
+
     
-// export function filterByOrigin(payload){
-//     return {
-//         type: 'FILTER_BY_ORIGIN',
-//         payload,
-//     }
-// }

@@ -10,7 +10,7 @@ export default function Navbar({setCurrentPage, setFilter}) {
      
     <div>
       <Filters
-    
+      
       setCurrentPage={setCurrentPage}
       setFilter={setFilter}
     />

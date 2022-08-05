@@ -34,7 +34,6 @@ useEffect(()=>{
     
         <img className='img-container' src= {recipeDetail.length ? recipeDetail[0].image:"Imagen no encontrada"}/>
         <h2> Receta:{recipeDetail.length? recipeDetail[0].name:"Cargando"}</h2>
-        <h5>Types:{recipeDetail.length? recipeDetail[0].dishTypes:"Cargando"}</h5> 
         <h5>Dietas:{recipeDetail.length? recipeDetail[0].dietTypes:"Tipos Dietas"}</h5>
         <h5>summary:{recipeDetail.length? recipeDetail[0].summary.replace(/<[^>]*>/g, ''):"Cargando"}</h5>
         <h5>healthScore:{recipeDetail.length? recipeDetail[0].healthScore:"Cargando"} </h5>

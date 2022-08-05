@@ -4,7 +4,6 @@ const express = require('express')
 const router = express.Router();
 const {Recipe, Type} = require ('../db');
 const { v4: uuidv4 } = require('uuid');
-// const { or } = require('sequelize/types');
 
 router.get('/', async(req,res)=>{
 const {name} = req.query;
@@ -56,64 +55,12 @@ router.get('/:id',async(req,res)=>{
 
 })
 
-router.get('/order/:info',async(req, res)=>{
-    let allRecip = await getAllRecipes();
-    const {info} = req.params
-    var order;
-    if(info==="scoremin"){
-        order = allRecip.sort(function(a,b){
-            if(a.healthScore>b.healthScore){
-                return 1;
-            }
-            if(a.healthScore<b.healthScore){
-                return -1;
-            }
-            return 0;
-        })
-    }
-    if(info ==="scoremax"){
-        order = allRecip.sort(function(a,b){
-            if(a.healthScore>b.healthScore){
-                return -1
-            }
-            if(a.healthScore<b.healthScore){
-                return 1;
-            }
-            return 0;
-        });
-    }
-    res.send(order);
-})
 
-router.put('/update/:id', async (req, res)=>{
+
+
+router.delete('/delete/:id', async (req, res)=>{
         try {
           const {id} = req.params;
-          const { name, summary, healthScore, steps, dietTypes } = req.body;
-
-          const editRecipe = await Recipe.update(
-            {
-                name, 
-                summary, 
-                healthScore, 
-                steps, 
-             },
-            { where: {id} }
-          );
-          res.send(editRecipe);
-        //   const typedb = await Type.findAll({
-        //     where: {name:dietTypes}
-        //})
-          const typeUpdate = await typedb.addType(typedb)
-          res.status(200).send("Type modificado")
-        } catch (error) {
-          console.log(error);
-        }
-      
-})
-
-router.use('/delete/:id', async (req, res)=>{
-        try {
-          const id = req.params.id;
           await Recipe.destroy({
             where: { id: id },
           });

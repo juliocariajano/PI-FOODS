@@ -22,7 +22,7 @@ export default function Paginate(
             currentPage:
              currentPage-1)}>
             Prev</button>
-            {PageNumber && PageNumber.map((number)=>( number ===currentPage &&
+            {PageNumber && PageNumber.map((number)=>( 
             <button className='butto'
             key={number}
             onClick={()=> paginate(number)}>

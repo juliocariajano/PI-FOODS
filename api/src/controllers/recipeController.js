@@ -5,18 +5,65 @@ require ('dotenv').config();
 const {API_KEY} = process.env;
 
 
+// const getInfoApi = ()=>{
+//     fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=c64e0e0fb5cd436ca2be7d3bb7a0c352&addRecipeInformation=true&number=100`)
+
+
+//     .then((response)=>{apiEndPoint.data.results.map((e)=>{
+//         return {
+//             id:e.id,
+//             image:e.image,
+//             name:e.title,
+//             dietTypes: e.diets,
+//             summary: e.summary,
+//             healthScore:e.healthScore,
+//             dishTypes:e.dishTypes,
+//             steps:e.analyzedInstructions[0]? e.analyzedInstructions[0].steps.map((e)=>{
+//                 return {
+//                     number: e.number,
+//                     step:e.step,
+//                 };
+//             }): "No existen pasos registrados" 
+//         };
+//     }) ;
+//     return infoApiEndPoint
+// };
+
+// function onSearch(ciudad) {
+//     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric`)
+//       .then(r => r.json())
+//       .then((recurso) => {
+//         if(recurso.main !== undefined){
+//           const ciudad = {
+//             min: Math.round(recurso.main.temp_min),
+//             max: Math.round(recurso.main.temp_max),
+//             img: recurso.weather[0].icon,
+//             id: recurso.id,
+//             wind: recurso.wind.speed,
+//             temp: recurso.main.temp,
+//             name: recurso.name,
+//             weather: recurso.weather[0].main,
+//             clouds: recurso.clouds.all,
+//             latitud: recurso.coord.lat,
+//             longitud: recurso.coord.lon
+//           };
+//           setCities(oldCities => [...oldCities, ciudad]);
+//         } else {
+//           alert("Ciudad no encontrada");
+//         }
+//       });
+
+
 const getInfoApi = async ()=>{
-    const apiEndPoint = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=4814ba64fedf4455a41e2ecd27a918f7&addRecipeInformation=true&number=100`)
+    const apiEndPoint = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=bfd92a5faacd41618128ad2e2d81a78b&addRecipeInformation=true&number=100`)
     const infoApiEndPoint = await apiEndPoint.data.results.map((e)=>{
         return {
             id:e.id,
             image:e.image,
             name:e.title,
             dietTypes: e.diets,
-            createDb:e.createDb,
             summary: e.summary,
             healthScore:e.healthScore,
-            dishTypes:e.dishTypes,
             steps:e.analyzedInstructions[0]? e.analyzedInstructions[0].steps.map((e)=>{
                 return {
                     number: e.number,
@@ -27,6 +74,7 @@ const getInfoApi = async ()=>{
     }) ;
     return infoApiEndPoint
 };
+
 
 const getDbInfo= async ()=>{
     const recipeDb= await Recipe.findAll({include:Type});
@@ -39,8 +87,7 @@ const getDbInfo= async ()=>{
             healthScore: e.healthScore,
             createDb:e.createDb,
             dietTypes: e.Types?.map(e=>e.name),
-            steps: e.steps
-           
+            steps: e.steps           
         }
     })
     return res
