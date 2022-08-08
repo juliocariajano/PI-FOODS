@@ -79,6 +79,13 @@ export function filterOrigin(payload){
         payload
     }
 }
+export function filterByCooking(payload){
+    return {
+        type: "FILTER_COOKING",
+        payload
+    }
+}
+
 export function addRecipes(payload){
     return async function(dispatch){
         var json = await axios.post("/recipe", payload)

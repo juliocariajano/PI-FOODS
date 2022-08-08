@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getRecipes, getTypes, alphabeticalSort, filterByDietType, scoreSort,filterOrigin } from '../actions/index.js'
+import { getRecipes, getTypes, alphabeticalSort, filterByDietType, scoreSort,filterOrigin,filterByCooking } from '../actions/index.js'
 import {Link} from "react-router-dom"
 import'../Styles/Filters.css'
 
@@ -30,7 +30,12 @@ export default function Filters({setFilter, setCurrentPage, allTypes}) {
       dispatch(filterOrigin(e.target.value))
        setCurrentPage(1)
       }
-    
+    // function handleFilterCocking(e){
+    //   e.preventDefault
+    //   dispatch(filterByCooking(e.target.value))
+    //   setCurrentPage(1)
+    // }
+
     function handleScoreSort(e){
       e.preventDefault()
         dispatch(scoreSort(e.target.value))
@@ -54,7 +59,14 @@ export default function Filters({setFilter, setCurrentPage, allTypes}) {
       <option value='api'>Api</option>
       </select>
 
-      
+      {/* <select
+      onChange={(e)=>handleFilterCocking(e)}>
+        <option hidden>Filter por Cookink</option>
+      <option value='menor45'>Tiempo de coccion menor a 25</option>
+      <option value='mayor45'>Tiempo de coccion mayor a 25</option>
+
+      </select> */}
+
       <select 
       onChange={(e)=>handleScoreSort(e)}
        >

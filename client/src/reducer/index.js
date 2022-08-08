@@ -63,7 +63,11 @@ function reducer (state=initialState, action){
                     ...state,
                     recipes: filterByOrigin}; 
                 
-            
+                // case 'FILTER_COOKING':
+                // const fil = state.setRecipes;
+                // const filterByCooking = action.payload ===='menor45'
+
+
             case 'ALPHABETICAL_SORT':
             const filterOrder = action.payload === "ascendente"? state.recipes.sort((a,b)=> a.name.localeCompare(b.name)) : state.recipes.sort((a,b)=>b.name.localeCompare(a.name));
                 return {

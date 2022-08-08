@@ -5,10 +5,23 @@ import {useDispatch, useSelector} from 'react-redux';
 import { addRecipes, getTypes } from '../actions';
 import "../Styles/CreateRecipe.css"
 
+function validate(input){
+const errors = {};
+if(!input.name || isNaN(input.name)===false || input.length>15 ){errors.name="Name required"}
+if(!input.summary){errors.summary = "Summary required "}
+if(isNaN(input.healthScore)===true ){errors.healthScore="The value HealthScore required is numeric"}
+if(!input.steps){errors.steps = "Steps required"}
+if(!input.dietTypes.length){errors.dietTypes ='DietTypes required'}
+// console.log(errors)
+return errors;
+
+}
+
 
 export default function CreateRecipe() {
 const dispatch = useDispatch();
 const history = useNavigate();
+const [errors, setErrors] = useState({})
 const type= useSelector(state => state.types);
 const [input, setInput] = useState({
     name:'',
@@ -23,6 +36,10 @@ function handleChange(e){
         ...input,
         [e.target.name]:e.target.value
     })
+    setErrors(validate({
+      ...input,
+      [e.target.name]:e.target.value
+    }))
 
 };
 
@@ -37,8 +54,10 @@ function handleSelect(e){
 
 function handleSubmit(e){
     e.preventDefault()
- 
-    dispatch(addRecipes(input))
+    setErrors(validate(input))
+    const alerts=(validate(input))
+    if(Object.values(alerts).length !==0){alert('Required validate ')}else{
+      dispatch(addRecipes(input))
     alert('created')
     setInput({
         name:'',
@@ -46,7 +65,8 @@ function handleSubmit(e){
         healthScore: '',
         steps: [],
         dietTypes: []
-    })
+    })}
+   
     setTimeout(function(){
     history('/home')
 }, 5000)
@@ -76,7 +96,7 @@ const alert = function(error){
         }, 5000)
       }else {
         mod.style.cssText = 'display: flex; background-color: rgba(240, 10, 10, 0.87); min-height: 40px; width: 430px; border-radius: 50px; margin-top: 7px; padding: 20px;'
-        modText.innerHTML = '<strong>¡Stop!</strong>. No puedes dejar el ' + `${error}` + ' vacio. Por favor completa todas las campos'
+        modText.innerHTML = '<strong>¡Stop!</strong>. No puedes dejar el ' + `${error}` + ' vacio, Ingresa la informacion que corresponde. Por favor completa todas las campos'
         setTimeout(function(){
           mod.style.display='none'
         }, 3000)
@@ -110,7 +130,7 @@ return(
                 <input
                 className='field'
                 type="text"
-                placeholder="Nombre"
+                placeholder="Name"
                 value={input.name}
                 name= "name"
                 onChange={(e)=>handleChange(e)}
@@ -119,28 +139,29 @@ return(
                 <input
                 className='field'
                 type="text"
-                placeholder="Resumen"
+                placeholder="Summary"
                 value={input.summary}
                 name= "summary"
                 onChange={(e)=>handleChange(e)}
                 />
-                               
+                    
               <input
                 className='field'
-                 max={100}
-                 min={0}
-                
+                 max={"100"}
+                 min={"0"}
                 type="number"
-                placeholder="Valor saludable"
+                placeholder="HealthScore"
                 value={input.healthScore}
                 name= "healthScore"
-                onChange={(e)=>handleChange(e)}
-                />
-                           
+                
+                onChange={(e)=>handleChange(e)}/>
+               {input.healthScore}
+               {errors.healthScore && (<p className='textdelete'>{errors.healthScore}</p>)}
+                                         
                 <textarea
                 className='field area'
                 type="text"
-                placeholder="Pasos"
+                placeholder="Steps"
                 value={input.steps}
                 name= "steps"
                 onChange={(e)=>handleChange(e)}
@@ -171,15 +192,17 @@ return(
         onClick={handleSubmit}
         disabled={
             !input.name ||
+            isNaN(input.name)=== true ||
             !input.summary ||
             !input.healthScore ||
+            errors.healthScore ||
             !input.steps||
             !input.dietTypes.length    
         }
-        >Crear receta</button>
+        >Create Recipe</button>
         </div><br/>
         <></>
-        <Link to='/home'><button className='btnt' >Volver</button></Link>
+        <Link to='/home'><button className='btnt' >Home</button></Link>
         </form>
 
 

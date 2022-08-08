@@ -60,6 +60,7 @@ const getInfoApi = async ()=>{
         return {
             id:e.id,
             image:e.image,
+            readyInMinutes:e.readyInMinutes,
             name:e.title,
             dietTypes: e.diets,
             summary: e.summary,
