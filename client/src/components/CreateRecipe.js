@@ -147,8 +147,8 @@ return(
                     
               <input
                 className='field'
-                 max={"100"}
-                 min={"0"}
+                 max={100}
+                 min={0}
                 type="number"
                 placeholder="HealthScore"
                 value={input.healthScore}
@@ -156,7 +156,8 @@ return(
                 
                 onChange={(e)=>handleChange(e)}/>
                {input.healthScore}
-               {errors.healthScore && (<p className='textdelete'>{errors.healthScore}</p>)}
+               {errors.healthScore && 
+               (<p className='textdelete'>{errors.healthScore}</p>)}
                                          
                 <textarea
                 className='field area'
