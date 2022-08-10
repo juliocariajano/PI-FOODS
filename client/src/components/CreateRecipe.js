@@ -9,7 +9,9 @@ function validate(input){
 const errors = {};
 if(!input.name || isNaN(input.name)===false || input.length>15 ){errors.name="Name required"}
 if(!input.summary){errors.summary = "Summary required "}
-if(!input.healthScore || isNaN(input.healthScore)===true ){errors.healthScore="The value HealthScore required is numeric, max 100 and min 1"}
+if(isNaN(input.healthScore)===true){errors.healthScore="The value HealthScore required is numeric"}
+if(!input.healthScore ){errors.healthScore="The value HealthScore required"}
+if((input.healthScore <0 ) || (input.healthScore>100) ){errors.healthScore="The value HealthScore required is numeric, max 100 and min 1"}
 if(!input.steps){errors.steps = "Steps required"}
 if(!input.dietTypes.length){errors.dietTypes ='DietTypes required'}
 // console.log(errors)
@@ -55,22 +57,20 @@ function handleSelect(e){
 function handleSubmit(e){
     e.preventDefault()
     setErrors(validate(input))
-    const alerts=(validate(input))
-    if(Object.values(alerts).length !==0){alert('Required validate ')}else{
+    const alerts=validate(input)
+    if(Object.values(alerts).length !==0){alert('Required validate ')}
+    else{
       dispatch(addRecipes(input))
-    alert('created')
+    alert('Congratulations, recipe create')
     setInput({
-        name:'',
-        summary:'',
-        healthScore: '',
+        name:"",
+        summary:"",
+        healthScore: "",
         steps: [],
         dietTypes: []
-    })}
-   
-    setTimeout(function(){
+    })
     history('/home')
-}, 5000)
-
+  }
 }
 
 function handleDelete(e){
@@ -84,36 +84,6 @@ useEffect(()=>{
     dispatch(getTypes());
 }, [dispatch]);
 
-const alert = function(error){
-    if (error !== 'undefined') {
-      const mod = document.getElementById('alert')
-      const modText = document.getElementById('content-text')
-      if (error === 'created') {
-        mod.style.cssText = 'display: flex; background-color: rgba(79, 240, 10, 0.87); min-height: 40px; width: 430px; border-radius: 50px; margin-top: 7px; padding: 20px;'
-        modText.innerHTML = '<strong>¡Congratulations!</strong>. You created ' + `<strong>${input.name}</strong>`
-        setTimeout(function(){
-          mod.style.display='none'
-        }, 5000)
-      }else {
-        mod.style.cssText = 'display: flex; background-color: rgba(240, 10, 10, 0.87); min-height: 40px; width: 430px; border-radius: 50px; margin-top: 7px; padding: 20px;'
-        modText.innerHTML = '<strong>¡Stop!</strong>. No puedes dejar el ' + `${error}` + ' vacio, Ingresa la informacion que corresponde. Por favor completa todas las campos'
-        setTimeout(function(){
-          mod.style.display='none'
-        }, 3000)
-      }
-    }
-  }
-
-  const funcion = function(){
-    let f = input;
-    for(const e in f) {
-      if (!f[e] || !f[e].length) {
-        alert(e)
-      }else {
-        continue
-      }break
-    }
-  }
 
 return(
     <div className='general'>
@@ -186,22 +156,13 @@ return(
                 <button key={e} className="textdelete" onClick={()=> handleDelete(e)}>{'==> X'}</button>
             </div>
             )}
-        <div className='button-div' onMouseEnter={funcion}>
+        <div className='button-div' 
+        
+        >
         <button 
         className='btnt' 
         type="submit"
-        value= 'create'
-        id="form-button"
-        onClick={handleSubmit}
-        disabled={
-            !input.name ||
-            isNaN(input.name)=== true ||
-            !input.summary ||
-            !input.healthScore ||
-            errors.healthScore ||
-            !input.steps||
-            !input.dietTypes.length    
-        }
+        
         >Create Recipe</button>
         </div><br/>
         <></>
