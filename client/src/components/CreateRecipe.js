@@ -9,7 +9,7 @@ function validate(input){
 const errors = {};
 if(!input.name || isNaN(input.name)===false || input.length>15 ){errors.name="Name required"}
 if(!input.summary){errors.summary = "Summary required "}
-if(isNaN(input.healthScore)===true ){errors.healthScore="The value HealthScore required is numeric"}
+if(!input.healthScore || isNaN(input.healthScore)===true ){errors.healthScore="The value HealthScore required is numeric, max 100 and min 1"}
 if(!input.steps){errors.steps = "Steps required"}
 if(!input.dietTypes.length){errors.dietTypes ='DietTypes required'}
 // console.log(errors)
@@ -135,6 +135,8 @@ return(
                 name= "name"
                 onChange={(e)=>handleChange(e)}
                 />
+                {errors.name && (
+                <p className="textdelete">{errors.name}</p>)}
                          
                 <input
                 className='field'
@@ -144,7 +146,8 @@ return(
                 name= "summary"
                 onChange={(e)=>handleChange(e)}
                 />
-                    
+              {errors.summary && (
+                <p className="textdelete">{errors.summary}</p>)}
               <input
                 className='field'
                  max={100}
@@ -153,11 +156,9 @@ return(
                 placeholder="HealthScore"
                 value={input.healthScore}
                 name= "healthScore"
-                
                 onChange={(e)=>handleChange(e)}/>
-               {input.healthScore}
-               {errors.healthScore && 
-               (<p className='textdelete'>{errors.healthScore}</p>)}
+                {errors.healthScore && (
+                <p className="textdelete">{errors.healthScore}</p>)}
                                          
                 <textarea
                 className='field area'
@@ -167,12 +168,13 @@ return(
                 name= "steps"
                 onChange={(e)=>handleChange(e)}
                 />
-               
+               {errors.steps && (
+                <p className="textdelete">{errors.steps}</p>)}
+
             <label>Agrega dieta(s) a la receta</label>
             <select onChange={(e)=>handleSelect(e)}>
                 <option hidden>Seleccionar una o varios Tipos de Dieta</option>
-                
-                                    
+                                                 
                     {type.map((typ)=>(
                         <option value={typ.name}>{typ.name}</option>
                     ))}
