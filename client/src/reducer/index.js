@@ -69,7 +69,9 @@ function reducer (state=initialState, action){
 
 
             case 'ALPHABETICAL_SORT':
-            const filterOrder = action.payload === "ascendente"? state.recipes.sort((a,b)=> a.name.localeCompare(b.name)) : state.recipes.sort((a,b)=>b.name.localeCompare(a.name));
+            const filterOrder = action.payload === "ascendente"? 
+            state.recipes.sort((a,b)=> a.name.localeCompare(b.name)) 
+            : state.recipes.sort((a,b)=>b.name.localeCompare(a.name));
                 return {
                     ...state,
                     recipes:filterOrder
